@@ -1,11 +1,11 @@
 public class NotificationService()
 {
-    public ... Get(string type)
+    public void Get(string type)
     {
         if (type == "Email")
-            return new ...();
+            new EmailNotification().SendNotification(type);
         else if (type == "SMS")
-            return new ...();
+            new SmsNotification().SendNotification(type);
         //else if (type == "Push")
         //	return new ...();
 
@@ -13,3 +13,25 @@ public class NotificationService()
             throw new ArgumentException("Invalid notification type.");
     }
 }
+
+public interface INotification
+{
+    public void SendNotification(string type);
+}
+
+public class SmsNotification : INotification
+{
+    public void SendNotification(string type)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class EmailNotification : INotification
+{
+    public void SendNotification(string type)
+    {
+        throw new NotImplementedException();
+    }
+}
+
