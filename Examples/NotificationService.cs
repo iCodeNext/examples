@@ -1,15 +1,15 @@
-public class NotificationService()
+public class NotificationService
 {
-    public ... Get(string type)
-    {
-        if (type == "Email")
-            return new ...();
-        else if (type == "SMS")
-            return new ...();
-        //else if (type == "Push")
-        //	return new ...();
+    private readonly INotificationService _notificationService;
 
-        else
-            throw new ArgumentException("Invalid notification type.");
+
+    public NotificationService(INotificationService notificationService)
+    {
+        _notificationService = notificationService;
+    }
+
+    public void PushNotification(string message)
+    {
+        _notificationService.Push(message);
     }
 }

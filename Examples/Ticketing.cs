@@ -1,14 +1,14 @@
-public class TicketService
+public class Ticketing
 {
-    public ... Get(string ticketType)
+    private readonly ITicketing _ticketing;
+
+    public Ticketing(ITicketing ticketing)
     {
-        if (ticketType == "Movie")
-            return new ...();
-        else if (ticketType == "Concert")
-            return new ...();
-        else if (ticketType == "Flight")
-            return new ...();
-        else
-            throw new ArgumentException("Invalid ticket type.");
+        _ticketing = ticketing;
+    }
+
+    public void ReserveTicket()
+    {
+        _ticketing.Reserve();
     }
 }
