@@ -1,4 +1,6 @@
-﻿public interface INotification
+﻿using Examples.E2;
+
+public interface INotification
 {
     void Send(string message);
 }
@@ -23,18 +25,16 @@ public class SlackNotification
 } 
 #endregion
 
-public class NotificationService()
+public class NotificationService1
 {
-    public ... Get(string type)
+    public INotification Get(string type)
     {
-        if (type == "Email")
-            return new ...();
-        else if (type == "SMS")
-            return new ...();
-        else if (type == "Slack")
-            return new ...();
-
-        else
-            throw new ArgumentException("Invalid notification type.");
+        return type switch
+        {
+            "email" => new EmailNotification(),
+            "sms" => new SmsNotification(),
+            "slack" => new SlackNotificationAdapter(new SlackNotification()),
+            _ => throw new ArgumentException("type is invalid!")
+        };
     }
 }
