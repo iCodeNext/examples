@@ -13,6 +13,16 @@ public class SmsNotification : INotification
     public void Send(string message) => Console.WriteLine($"SMS sent: {message}");
 }
 
+public class SlackNotificationSender(SlackNotification slackNotification) : INotification
+{
+    public void Send(string message) 
+    {
+        slackNotification.PostMessageToChannel("iCodeNext", message);
+    } 
+}
+
+
+
 #region Thid block of code is not in your code base, it is a library(3rd party)
 public class SlackNotification
 {
@@ -25,14 +35,14 @@ public class SlackNotification
 
 public class NotificationService()
 {
-    public ... Get(string type)
+    public INotification Get(string type)
     {
         if (type == "Email")
-            return new ...();
+            return new EmailNotification();
         else if (type == "SMS")
-            return new ...();
+            return new SmsNotification();
         else if (type == "Slack")
-            return new ...();
+            return new SlackNotificationSender(new SlackNotification());
 
         else
             throw new ArgumentException("Invalid notification type.");
