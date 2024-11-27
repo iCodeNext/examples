@@ -1,15 +1,15 @@
-public class NotificationService()
-{
-    public ... Get(string type)
-    {
-        if (type == "Email")
-            return new ...();
-        else if (type == "SMS")
-            return new ...();
-        //else if (type == "Push")
-        //	return new ...();
+//public class NotificationService()
+//{
+//    public INotificationService Get(string type)
+//    {
+//        if (type == "Email")
+//            return new EmailService();
+//        else if (type == "SMS")
+//            return new SmsService();
+//        //else if (type == "Push")
+//        //	return new ...();
 
-        else
-            throw new ArgumentException("Invalid notification type.");
-    }
-}
+//        else
+//            throw new ArgumentException("Invalid notification type.");
+//    }
+//}
